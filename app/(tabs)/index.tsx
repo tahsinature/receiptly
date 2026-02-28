@@ -2,6 +2,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { File, Paths } from 'expo-file-system';
 import { useShareIntentContext } from 'expo-share-intent';
 import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Image, View } from 'react-native';
 
 import { Text } from '@/components/ui/text';
@@ -15,6 +16,7 @@ export default function HomeScreen() {
   const { hasShareIntent, shareIntent, resetShareIntent } =
     useShareIntentContext();
   const insets = useSafeAreaInsets();
+  const { t } = useTranslation();
 
   // Load saved image on mount
   useEffect(() => {
@@ -57,8 +59,8 @@ export default function HomeScreen() {
       style={{ paddingTop: insets.top }}
     >
       <View className="px-6 pt-6 pb-4">
-        <Text className="text-3xl font-bold text-foreground">receiptly</Text>
-        <Text className="mt-1 text-muted-foreground">Scan. Track. Save.</Text>
+        <Text className="text-3xl font-bold text-foreground">{t('common.appName')}</Text>
+        <Text className="mt-1 text-muted-foreground">{t('common.tagline')}</Text>
       </View>
 
       <View className="flex-1 items-center justify-center px-6">
@@ -72,16 +74,16 @@ export default function HomeScreen() {
               />
             </View>
             <Text className="text-sm text-muted-foreground">
-              Last shared receipt
+              {t('home.lastShared')}
             </Text>
           </View>
         ) : (
           <View className="w-full items-center">
             <Text className="text-lg text-muted-foreground text-center">
-              No receipt yet
+              {t('home.noReceipt')}
             </Text>
             <Text className="mt-2 text-sm text-muted-foreground text-center">
-              Share an image from your gallery to get started
+              {t('home.shareHint')}
             </Text>
           </View>
         )}

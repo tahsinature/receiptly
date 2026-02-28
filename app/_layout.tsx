@@ -17,6 +17,7 @@ import { useColorScheme } from 'nativewind';
 import * as React from 'react';
 import { useEffect } from 'react';
 
+import '@/lib/i18n';
 import { NAV_THEME } from '@/lib/theme';
 
 SplashScreen.preventAutoHideAsync();
